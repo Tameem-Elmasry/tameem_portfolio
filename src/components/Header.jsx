@@ -5,6 +5,7 @@ import React, { useContext, useEffect, useState } from "react";
 import Navbar from "./Navbar";
 import ToggleThemeBtn from "./ToggleThemeBtn";
 import { ThemeContext } from "../context/ThemeContext";
+import AudioToggle from "./AudioToggle";
 
 const Header = () => {
     // @ states
@@ -52,6 +53,7 @@ const Header = () => {
                         </button>
                         <Navbar navOpen={navOpen} />
                     </div>
+                    <AudioToggle />
                 </div>
                 <a
                     href="#contact"

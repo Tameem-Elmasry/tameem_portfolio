@@ -20,7 +20,7 @@ const ProjectCard = ({ imgSrc, title, tags, projectLink, classes }) => {
                     <div className="flex flex-wrap items-center gap-2">
                         {tags.map((label, key) => (
                             <span
-                                className="sm:h-8 h-5 sm:text-sm dark:text-zinc-400 text-gray-100 dark:bg-zinc-50/5 bg-slate-900 flex justify-center items-center px-2 sm:px-3 sm:rounded-lg rounded-md"
+                                className="sm:h-8 h-6 sm:text-sm dark:text-zinc-400 text-gray-100 dark:bg-zinc-50/5 bg-slate-900 flex justify-center items-center px-2 sm:px-3 sm:rounded-lg rounded-md"
                                 key={key}
                             >
                                 {label}
