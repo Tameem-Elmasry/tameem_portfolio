@@ -46,7 +46,7 @@ headline-2_white {
 
 .headline-1_white,
 .headline-1_dark {
-    @apply text-5xl font-semibold lg:text-[55px] lg:leading-[1.15];
+    @apply sm:text-5xl text-4xl font-semibold lg:text-[55px] lg:leading-[1.15];
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -58,7 +58,7 @@ headline-2_white {
 }
 
 .title-1 {
-    @apply text-[22px] dark:font-normal font-medium;
+    @apply sm:text-[22px] text-[18px] dark:font-normal font-medium;
 }
 
 /* ! ------- */

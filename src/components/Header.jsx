@@ -36,7 +36,7 @@ const Header = () => {
                         />
                     </a>
                 </h1>
-                <h1 className={`md:hidden sm:text-xl text-sm`}>
+                <h1 className={`md:hidden sm:text-xl text-[12px]`}>
                     Tameem Muhammad <span className={`px-2`}>-</span> تميم محمد
                 </h1>
                 <div className="flex flex-row items-center justify-center sm:gap-2 gap-1">
