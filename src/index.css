@@ -94,9 +94,9 @@ headline-2_white {
 /* ! ------- */
 .menu-btn,
 .toggle-theme-btn {
-    @apply w-10 h-10 grid place-items-center 
+    @apply sm:size-10 size-[25px] rounded-lg sm:rounded-xl grid place-items-center 
     bg-zinc-100/50 dark:bg-zinc-50/10 
-    rounded-xl ring-inset ring-1 
+    ring-inset ring-1 
     ring-zinc-300 dark:ring-zinc-50/[0.02] 
     backdrop-blur-2xl 
     hover:bg-zinc-200/60 dark:hover:bg-zinc-50/15 

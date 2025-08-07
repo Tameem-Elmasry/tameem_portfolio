@@ -39,14 +39,14 @@ const Header = () => {
                 <h1 className={`md:hidden sm:text-xl text-sm`}>
                     Tameem Muhammad <span className={`px-2`}>-</span> تميم محمد
                 </h1>
-                <div className="flex flex-row items-center justify-center gap-4">
+                <div className="flex flex-row items-center justify-center sm:gap-2 gap-1">
                     <ToggleThemeBtn />
                     <div className={`relative md:justify-self-center`}>
                         <button
                             className={`menu-btn md:hidden`}
                             onClick={() => setNavOpen((prev) => !prev)}
                         >
-                            <span className="material-symbols-rounded">
+                            <span className="material-symbols-rounded sm:text-[28px] text-[18px] ">
                                 {navOpen ? "close" : "menu"}
                             </span>
                         </button>

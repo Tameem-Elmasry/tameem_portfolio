@@ -11,7 +11,11 @@ const ToggleThemeBtn = () => {
             aria-label="toggle theme"
             onClick={toggleTheme}
         >
-            {theme === "dark" ? <Sun /> : <Moon />}
+            {theme === "dark" ? (
+                <Sun className={`sm:size-[24px] size-[18px]`} />
+            ) : (
+                <Moon className={`sm:size-[24px] size-[18px]`} />
+            )}
         </button>
     );
 };

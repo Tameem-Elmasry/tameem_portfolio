@@ -6,7 +6,7 @@ const ProjectCard = ({ imgSrc, title, tags, projectLink, classes }) => {
         <div
             className={`relative p-4 rounded-2xl dark:bg-zinc-800 bg-gray-200 dark:hover:bg-zinc-700/50 hover:bg-zinc-300 dark:active:bg-zinc-700/60 active:bg-slate-300 ring-1 ring-inset dark:ring-zinc-50/5 ring-slate-500/80 transition-colors group ${classes}`}
         >
-            <figure className="img-box aspect-square mb-4 rounded-lg shadow-lg group-hover:shadow-xl">
+            <figure className="img-box aspect-square mb-4 rounded-lg shadow-lg mx-auto group-hover:shadow-xl w-[270px] sm:w-full ">
                 <img
                     src={imgSrc}
                     alt={title}
