@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import SkillCard from "./SkillCard";
+import { ThemeContext } from "../context/ThemeContext";
 
 const skillItem = [
     {
@@ -50,13 +51,29 @@ const skillItem = [
 ];
 
 const Skills = () => {
+    const [style_theme, setStyle_Theme] = useState("");
+
+    // @ constants
+    const { theme } = useContext(ThemeContext);
+
+    // @ effects
+    useEffect(() => {
+        setStyle_Theme(theme);
+    }, [theme]);
+
     return (
         <section id="tech" className="section">
             <div className="container">
-                <h2 className="headline-2 reveal-up">
+                <h2
+                    className={`${
+                        style_theme === "dark"
+                            ? "headline-2_dark"
+                            : "headline-2_white"
+                    } reveal-up`}
+                >
                     Essentials Tools that I use
                 </h2>
-                <p className="text-zinc-400 mt-3 mb-8 max-w-[50ch] reveal-up">
+                <p className="dark:text-zinc-400 text-slate-600 mt-3 mb-8 max-w-[50ch] reveal-up">
                     Discover the powerful tools and technologies I use to create
                     exceptional, high-performing websites & applications
                 </p>

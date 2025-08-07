@@ -7,25 +7,42 @@ import {
     Twitter,
     X,
 } from "lucide-react";
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { ThemeContext } from "../context/ThemeContext";
 
 const Contact = () => {
-    const classes = `w-12 h-12 grid place-items-center ring-2 ring-inset ring-zinc-50/5 rounded-lg transition-[background-color,color] hover:bg-zinc-50 hover:text-zinc-950 active:bg-zinc-50/80 reveal-up`;
+    const [style_theme, setStyle_Theme] = useState("");
+
+    // @ constants
+    const { theme } = useContext(ThemeContext);
+
+    // @ effects
+    useEffect(() => {
+        setStyle_Theme(theme);
+    }, [theme]);
+
+    const icons_classes = `w-12 h-12 grid place-items-center ring-2 ring-inset dark:ring-zinc-50/5 ring-gray-400/70 rounded-lg transition-[background-color,color] dark:hover:bg-zinc-50 hover:bg-zinc-800 dark:hover:text-zinc-950 hover:text-white/70 dark:active:bg-zinc-50/80 active:bg-zinc-500 reveal-up hover:ring-zinc-800`;
     return (
         <section className="section" id="contact">
             <div className="container lg:grid lg:grid-cols-2 lg:items-stretch">
                 <div className="mb-12 lg:mb-0 lg:flex lg:flex-col">
-                    <h2 className="headline-2 reveal-up lg:max-w-[12ch]">
+                    <h2
+                        className={`${
+                            style_theme === "dark"
+                                ? "headline-2_dark"
+                                : "headline-2_white"
+                        } reveal-up lg:max-w-[12ch]`}
+                    >
                         Contact me for collaboration
                     </h2>
-                    <p className="reveal-up text-zinc-400 mt-3 mb-8 max-w-[50ch] lg:max-w-[30ch]">
+                    <p className="reveal-up dark:text-zinc-400 text-gray-600 mt-3 mb-8 max-w-[50ch] lg:max-w-[30ch]">
                         Reach out today to discuss your project needs and start
                         collaborating on something amazing!
                     </p>
                     <div className="flex items-center gap-2 mt-auto">
                         <a
                             href="https://github.com/Tameem-Elmasry"
-                            className={classes}
+                            className={icons_classes}
                             target="_blank"
                             title="Github"
                         >
@@ -33,7 +50,7 @@ const Contact = () => {
                         </a>
                         <a
                             href="https://www.linkedin.com/in/tameem-muhamed-elmasry-3929752a5"
-                            className={classes}
+                            className={icons_classes}
                             target="_blank"
                             title="LinkedIn"
                         >
@@ -41,7 +58,7 @@ const Contact = () => {
                         </a>
                         <a
                             href="https://x.com/TameemMo4629"
-                            className={classes}
+                            className={icons_classes}
                             target="_blank"
                             title="Twitter X"
                         >
@@ -49,7 +66,7 @@ const Contact = () => {
                         </a>
                         <a
                             href="https://www.instagram.com/tameemmo4629/?next=%2F"
-                            className={classes}
+                            className={icons_classes}
                             target="_blank"
                             title="Instagram"
                         >
@@ -57,20 +74,20 @@ const Contact = () => {
                         </a>
                         <a
                             href="https://linktr.ee/TameemElmasry"
-                            className={classes}
+                            className={icons_classes}
                             target="_blank"
                             title="LinkTree"
                         >
                             <Link />
                         </a>
-                        {/* <a
+                        <a
                             href="https://linktr.ee/TameemElmasry"
-                            className={classes}
+                            className={icons_classes}
                             target="_blank"
                             title="Whatsapp"
                         >
                             <Phone />
-                        </a> */}
+                        </a>
                     </div>
                 </div>
                 <form

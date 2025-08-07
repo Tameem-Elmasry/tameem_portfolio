@@ -4,9 +4,9 @@ import PropTypes from "prop-types";
 const ProjectCard = ({ imgSrc, title, tags, projectLink, classes }) => {
     return (
         <div
-            className={`relative p-4 rounded-2xl bg-zinc-800 hover:bg-zinc-700/50 active:bg-zinc-700/60 ring-1 ring-inset ring-zinc-50/5 transition-colors ${classes}`}
+            className={`relative p-4 rounded-2xl dark:bg-zinc-800 bg-gray-200 dark:hover:bg-zinc-700/50 hover:bg-zinc-300 dark:active:bg-zinc-700/60 active:bg-slate-300 ring-1 ring-inset dark:ring-zinc-50/5 ring-slate-500/80 transition-colors group ${classes}`}
         >
-            <figure className="img-box aspect-square mb-4 rounded-lg">
+            <figure className="img-box aspect-square mb-4 rounded-lg shadow-lg group-hover:shadow-xl">
                 <img
                     src={imgSrc}
                     alt={title}
@@ -20,7 +20,7 @@ const ProjectCard = ({ imgSrc, title, tags, projectLink, classes }) => {
                     <div className="flex flex-wrap items-center gap-2">
                         {tags.map((label, key) => (
                             <span
-                                className="h-8 text-sm text-zinc-400 bg-zinc-50/5 grid items-center px-3 rounded-lg"
+                                className="h-8 text-sm dark:text-zinc-400 text-gray-100 dark:bg-zinc-50/5 bg-slate-900 grid items-center px-3 rounded-lg"
                                 key={key}
                             >
                                 {label}
@@ -28,7 +28,7 @@ const ProjectCard = ({ imgSrc, title, tags, projectLink, classes }) => {
                         ))}
                     </div>
                 </div>
-                <div className="size-11 rounded-lg grid place-items-center bg-sky-400 text-zinc-950 shrink-0">
+                <div className="size-11 rounded-lg grid place-items-center bg-slate-600 text-white/70 dark:bg-sky-400 dark:text-zinc-950 shrink-0">
                     <span
                         className="material-symbols-rounded"
                         aria-hidden="true"

@@ -13,7 +13,7 @@ const Navbar = ({ navOpen }) => {
     useEffect(() => {
         const observer = new IntersectionObserver(
             (entries) => {
-                if (isClickScrolling) return; // ❗ Prevent updates during click scroll
+                if (isClickScrolling) return;
 
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {

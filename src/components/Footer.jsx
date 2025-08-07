@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { ButtonPrimary } from "./Button";
+import { ThemeContext } from "../context/ThemeContext";
 
 const sitemap = [
     {
@@ -52,12 +53,28 @@ const socials = [
 ];
 
 const Footer = () => {
+    const [style_theme, setStyle_Theme] = useState("");
+
+    // @ constants
+    const { theme } = useContext(ThemeContext);
+
+    // @ effects
+    useEffect(() => {
+        setStyle_Theme(theme);
+    }, [theme]);
+
     return (
         <footer className="section pb-1">
             <div className="container">
                 <div className="lg:grid lg:grid-cols-2 ">
                     <div className="mb-10">
-                        <h2 className="headline-1 mb-8 lg:max-w-[12ch]">
+                        <h2
+                            className={`${
+                                style_theme === "dark"
+                                    ? "headline-1_dark"
+                                    : "headline-1_white"
+                            } mb-8 lg:max-w-[12ch]`}
+                        >
                             {`Let's work together today`}
                         </h2>
                         <ButtonPrimary
@@ -69,13 +86,15 @@ const Footer = () => {
 
                     <div className="grid grid-cols-2 gap-4 lg:pl-20 ">
                         <div>
-                            <p className="mb-2">Sitemap</p>
+                            <p className="mb-2 font-semibold text-lg">
+                                Sitemap
+                            </p>
                             <ul>
                                 {sitemap.map(({ label, href }, key) => (
                                     <li key={key}>
                                         <a
                                             href={href}
-                                            className="block text-sm text-zinc-400 py-1 transitions-colors hover:text-zinc-200"
+                                            className="block text-sm dark:text-zinc-400 text-zinc-800 py-1 transitions-colors hover:font-semibold hover:slate-950 dark:hover:text-zinc-200"
                                         >
                                             {label}
                                         </a>
@@ -85,14 +104,16 @@ const Footer = () => {
                         </div>
 
                         <div>
-                            <p className="mb-2">Socials</p>
+                            <p className="mb-2 font-semibold text-lg">
+                                Socials
+                            </p>
                             <ul>
                                 {socials.map(({ label, href }, key) => (
                                     <li key={key}>
                                         <a
                                             href={href}
                                             target="_blank"
-                                            className="block text-sm text-zinc-400 py-1 transition-colors hover:text-zinc-200"
+                                            className="block text-sm dark:text-zinc-400 text-zinc-600 py-1 transition-colors hover:font-semibold hover:text-slate-950 dark:hover:text-zinc-200"
                                         >
                                             {label}
                                         </a>
@@ -106,15 +127,21 @@ const Footer = () => {
                 <div className="flex items-center justify-between pt-10 mb-8">
                     <a href="/">
                         <img
-                            src="/images/TE-white.png"
+                            src={`/images/TE-${
+                                style_theme === "dark" ? "white" : "black"
+                            }.png`}
                             width={40}
                             height={40}
                             alt="logo"
                         />
                     </a>
-                    <p className={`text-zinc-500 text-sm`}>
+                    <p
+                        className={`dark:text-zinc-500 dark:text-sm font-semibold`}
+                    >
                         &copy; 2025{" "}
-                        <span className="text-zinc-200">Tameem muhammad</span>
+                        <span className="dark:text-zinc-200 text-cyan-900">
+                            Tameem muhammad
+                        </span>
                     </p>{" "}
                 </div>
             </div>

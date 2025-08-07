@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import ReviewCard from "./ReviewCard";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import { ThemeContext } from "../context/ThemeContext";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -52,6 +53,16 @@ const reviews = [
 ];
 
 const Review = () => {
+    const [style_theme, setStyle_Theme] = useState("");
+
+    // @ constants
+    const { theme } = useContext(ThemeContext);
+
+    // @ effects
+    useEffect(() => {
+        setStyle_Theme(theme);
+    }, [theme]);
+
     useGSAP(() => {
         gsap.to(".scrub-slide", {
             scrollTrigger: {
@@ -67,7 +78,13 @@ const Review = () => {
     return (
         <section className="section overflow-hidden" id="reviews">
             <div className="container">
-                <h2 className="headline-2 mb-8 reveal-up">
+                <h2
+                    className={`${
+                        style_theme === "dark"
+                            ? "headline-2_dark"
+                            : "headline-2_white"
+                    } mb-8 reveal-up`}
+                >
                     What our customers say
                 </h2>
                 <div className=" scrub-slide flex items-stretch gap-3 w-fit">
