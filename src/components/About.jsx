@@ -17,9 +17,18 @@ const About = () => {
             <div className="container">
                 <div className="bg-zinc-800/50 p-7 rounded-2xl md:p-12 reveal-up ">
                     <p className="text-zinc-300 mb-4 md:mb-8 reveal-up md:text-xl md:max-w-[60ch]">
-                        I'm Tameem Elmasry, a 16-year-old MERN Stack developer
-                        from Egypt. I started my coding journey at age 10 and
-                        have been passionate about web development ever since. I
+                        I'm{` `}
+                        <span className="text-[#ade0f6] text-[1.4rem] border-b-2 border-[#20779d] inline -mr-1">
+                            T
+                        </span>
+                        {` `}
+                        ameem{` `}Muhammad{` `}
+                        <span className="text-[#ade0f6] text-[1.4rem] border-b-2 border-[#20779d] inline mr-[1.4px]">
+                            E
+                        </span>
+                        lmasry, a 16-year-old MERN Stack developer from Egypt. I
+                        started my coding journey at age 10 and have been
+                        passionate about web development ever since. I
                         specialize in creating responsive and user-friendly web
                         applications using modern technologies like React,
                         Node.js, Express, and MongoDB. I'm constantly improving

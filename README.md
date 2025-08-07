@@ -1,12 +1,95 @@
-# React + Vite
+# 🌐 Tameem Elmasry - Personal Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is my personal portfolio website built with **React**, **Vite**, and **Tailwind CSS**. It showcases my work, skills, and projects as a web developer.
 
-Currently, two official plugins are available:
+## 🚀 Technologies Used
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+-   ⚛️ React
+-   ⚡ Vite
+-   🎨 Tailwind CSS
+-   🧠 JavaScript / TypeScript (optional if you're using it)
+-   🛠️ ESLint & PostCSS
+-   🔧 Git & GitHub
 
-## Expanding the ESLint configuration
+## 📁 Project Structure
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+tameem_portfolio/
+
+├── public/ # Static files
+
+├── src/ # Source code
+
+│ ├── components/ # Reusable components
+
+│ ├── assets/ # Images, fonts, icons
+
+│ ├── App.jsx # Main app component
+
+│ └── main.jsx # App entry point
+
+├── .gitignore
+
+├── index.html
+
+├── package.json
+
+├── postcss.config.js
+
+├── tailwind.config.js
+
+└── vite.config.js
+
+## 📸 Features
+
+-   🧑‍💻 Responsive design
+-   🧭 Smooth scrolling navigation
+-   ✨ Animations and transitions
+-   📷 Project showcases
+-   📞 Contact section
+
+## 🛠️ Installation & Setup
+
+1. **Clone the repo**
+
+```bash
+git clone https://github.com/Tameem-Elmasry/tameem_portfolio.git
+cd tameem_portfolio
+```
+
+2. **Install dependencies**
+
+```bash
+npm install
+```
+
+3. **Run the development server**
+
+```bash
+npm run dev
+```
+
+4. **Build for production**
+
+```bash
+npm run build
+```
+
+## 🌍 Live Demo
+
+[Click here to view the live website](https://tameem-elmasry-portfolio.netlify.app/#home)
+
+> Replace the link above with your deployed link (Netlify, Vercel, GitHub Pages, etc.)
+
+## 🙋‍♂️ About Me
+
+I’m **Tameem Elmasry** , a 16-year-old self-taught MERN developer from Egypt. I build modern, scalable, and accessible web applications.
+
+📫 Reach me at:
+
+-   GitHub: [@Tameem-Elmasry](https://github.com/Tameem-Elmasry)
+-   LinkedIn: [Tameem Muhamed Elmasry](https://www.linkedin.com/in/tameem-muhamed-elmasry-3929752a5/)
+-   Email: [tameeemelmasry@gmail.com]()
+
+## 🪪 License
+
+This project is open-source and free to use.
