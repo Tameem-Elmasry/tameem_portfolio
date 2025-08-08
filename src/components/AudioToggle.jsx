@@ -58,7 +58,11 @@ const AudioToggle = () => {
             className="toggle-theme-btn"
             title={isPlaying ? "Stop Quraan" : "Play Quraan"}
         >
-            {isPlaying ? <Pause className={`sm:size-[24px] size-[18px]`} /> : <Play className={`sm:size-[24px] size-[18px]`} />}
+            {isPlaying ? (
+                <Pause className={`sm:size-[24px] size-[18px]`} />
+            ) : (
+                <Play className={`sm:size-[24px] size-[18px]`} />
+            )}
         </button>
     );
 };

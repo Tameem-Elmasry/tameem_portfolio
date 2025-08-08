@@ -1,89 +1,102 @@
-import React, { useContext, useEffect, useState } from "react";
-import { ThemeContext } from "../context/ThemeContext";
+import React, { useEffect, useRef, useState } from "react";
+import Who from "./Who";
+import Resume from "./Resume";
+import ScrollTrigger from "gsap/ScrollTrigger";
+import gsap from "gsap";
 
-const aboutItems = [
-    {
-        label: "Project done",
-        number: 15,
-    },
-    {
-        label: "Years of experience",
-        number: 5,
-    },
-];
+gsap.registerPlugin(ScrollTrigger);
+
+function animateRevealUp() {
+    ScrollTrigger.getAll().forEach((t) => t.kill());
+    const elements = gsap.utils.toArray(".reveal-up");
+    elements.forEach((element) => {
+        gsap.to(element, {
+            scrollTrigger: {
+                trigger: element,
+                start: "-100 bottom",
+                end: "bottom 50%",
+                scrub: true,
+            },
+            y: 0,
+            opacity: 1,
+            duration: 1,
+            ease: "power2.out",
+        });
+    });
+}
 
 const About = () => {
-    const [style_theme, setStyle_Theme] = useState("");
+    const [who, setWho] = useState(true);
 
-    // @ constants
-    const { theme } = useContext(ThemeContext);
+    // Refs for GSAP animations
+    const whoRef = useRef(null);
+    const resumeRef = useRef(null);
 
-    // @ effects
+    // Animate entrance/exit
     useEffect(() => {
-        setStyle_Theme(theme);
-    }, [theme]);
+        if (who) {
+            // Who enters from left
+            gsap.fromTo(whoRef.current,
+                { x: -50, opacity: 0, display: "block" },
+                { x: 0, opacity: 1, duration: 0.6, ease: "power2.out" }
+            );
+            // Resume exits to right
+            gsap.to(resumeRef.current, {
+                x: 50, opacity: 0, duration: 0.4, ease: "power2.in", onComplete: () => {
+                    resumeRef.current.style.display = "none";
+                }
+            });
+        } else {
+            // Resume enters from right
+            gsap.fromTo(resumeRef.current,
+                { x: 50, opacity: 0, display: "block" },
+                { x: 0, opacity: 1, duration: 0.6, ease: "power2.out" }
+            );
+            // Who exits to left
+            gsap.to(whoRef.current, {
+                x: -50, opacity: 0, duration: 0.4, ease: "power2.in", onComplete: () => {
+                    whoRef.current.style.display = "none";
+                }
+            });
+        }
+
+        animateRevealUp();
+    }, [who]);
 
     return (
-        <section id="about" className={`section`}>
-            <div className="container">
-                <div className="dark:bg-zinc-800/50 bg-gray-300 p-7 rounded-2xl md:p-12 reveal-up ">
-                    <p className="text-zinc dark:text-zinc-300 mb-4 md:mb-8 reveal-up md:text-xl md:max-w-[60ch]">
-                        I'm{` `}
-                        <span className="text-blue-950 font-bold dark:text-[#ade0f6] text-[1.4rem] border-b-2 border-[#20779d] inline -mr-[5px]">
-                            T
-                        </span>
-                        {` `}
-                        ameem{` `}Muhammad{` `}
-                        <span className="text-blue-950 font-bold dark:text-[#ade0f6] text-[1.4rem] border-b-2 border-[#20779d] inline mr-[1.4px]">
-                            E
-                        </span>
-                        lmasry, a 16-year-old MERN Stack developer from Egypt. I
-                        started my coding journey at age 10 and have been
-                        passionate about web development ever since. I
-                        specialize in creating responsive and user-friendly web
-                        applications using modern technologies like React,
-                        Node.js, Express, and MongoDB. I'm constantly improving
-                        my skills, contributing to real projects, and working
-                        toward becoming a professional full-stack developer. I
-                        believe in learning by doing, and I’m always open to new
-                        challenges and opportunities to grow.
-                    </p>
-                    <div className="reveal-up flex flex-wrap items-center gap-4 md:gap-7">
-                        {aboutItems.map(({ label, number }, key) => (
-                            <div key={key} className="">
-                                <div className="flex items-center md:gap-1">
-                                    <span className="text-2xl font-bold md:text-4xl">
-                                        {number}
-                                    </span>
-                                    <span className="dark:text-sky-400 text-sky-700 font-bold md:text-3xl">
-                                        +
-                                    </span>
-                                </div>
-                                <p
-                                    className={`text-sm dark:text-zinc-400 text-zinc-800`}
-                                >
-                                    {label}
-                                </p>
-                            </div>
-                        ))}
+        <section id="about" className="section">
+            <div className="container relative">
+                <div
+                    className="absolute flex items-center justify-center py-2 px-2 ring-2 ring-inset dark:ring-white/30 ring-slate-600 rounded-2xl gap-2 -top-16 left-[50%] translate-x-[-50%] reveal-up dark:bg-zinc-200/30 bg-black/15"
+                >
+                    <button
+                        className={`${
+                            who
+                                ? "dark:bg-white/90 bg-black/70 text-white dark:text-zinc-900 sm:text-lg text-md"
+                                : "bg-transparent text-slate-700 dark:text-white/80 sm:text-md text-sm"
+                        } px-3 py-1 rounded-lg transition-all duration-300`}
+                        onClick={() => setWho(true)}
+                    >
+                        Who I am
+                    </button>
+                    <button
+                        className={`${
+                            !who
+                                ? "dark:bg-white/90 bg-black/70 text-white dark:text-zinc-900 sm:text-lg text-md"
+                                : "bg-transparent text-slate-700 dark:text-white/80 sm:text-md text-sm"
+                        } px-3 py-1 rounded-lg transition-all duration-300`}
+                        onClick={() => setWho(false)}
+                    >
+                        Resume
+                    </button>
+                </div>
 
-                        <img
-                            src={`/images/TE-${
-                                style_theme === "dark" ? "white" : "black"
-                            }.png`}
-                            alt="tameem logo"
-                            width={30}
-                            height={30}
-                            className="ml-auto md:size-[70px]"
-                        />
-                    </div>
-                    <p className="reveal-up text-zinc dark:text-zinc-300 mt-8 mb-2 md:mb-4 md:text-xl md:max-w-[60ch]">
-                        Outside of coding, I enjoy solving problems, helping
-                        others learn, and building tech communities. I’ve led
-                        tech initiatives like the Computer Science Show to share
-                        knowledge and support learners. I believe that code can
-                        change lives, and I want to be part of that change.
-                    </p>
+                <div ref={whoRef} style={{ display: who ? "block" : "none" }}>
+                    <Who classes="mt-20" />
+                </div>
+
+                <div ref={resumeRef} style={{ display: !who ? "block" : "none" }}>
+                    <Resume classes="mt-20" />
                 </div>
             </div>
         </section>

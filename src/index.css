@@ -85,6 +85,10 @@ headline-2_white {
     @apply pt-20 lg:pt-32;
 }
 
+#about {
+    @apply sm:pt-16 pt-10;
+}
+
 .reveal-up {
     @apply translate-y-20 opacity-0;
 }
@@ -174,4 +178,32 @@ headline-2_white {
 
 .text-field::placeholder {
     @apply dark:text-zinc-400 text-gray-500;
+}
+
+.resume hr {
+    @apply w-2/4 mx-auto my-4 rounded-full border-2 border-gray-600;
+}
+
+.resume-div {
+    @apply w-full flex flex-col;
+}
+
+.resume-div-title {
+    @apply flex flex-row items-center gap-3;
+}
+
+.resume-div-title .icon {
+    @apply bg-sky-500 flex items-center;
+}
+
+.resume-div-title .icon-img {
+    @apply text-slate-800;
+}
+
+.resume-div-title > h3 {
+    @apply sm:text-xl text-lg font-semibold mb-6 flex;
+}
+
+.resume-div-title .icon-img {
+    @apply flex items-center justify-center mr-3 dark:bg-sky-500 bg-slate-900/20 rounded-lg size-[30px] p-[3px];
 }
