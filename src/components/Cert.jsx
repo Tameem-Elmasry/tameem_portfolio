@@ -4,21 +4,21 @@ import React from "react";
 const certs = [
     {
         imgSrc: "/images/cert1.png",
-        date: "Jan 3, 2021",
-        label: "Digital Egypt Cubs Initiative",
-        desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione tempore reprehenderit quia aspernatur eum iusto minima repellendus excepturi",
+        date: "Oct 20, 2023",
+        label: "DECI - year 1",
+        desc: "Completed Level Two Nanodegree from the Digital Egypt Cubs Initiative, gaining advanced digital and web development skills.",
     },
     {
-        imgSrc: "/images/cert1.png",
-        date: "Jan 3, 2021",
+        imgSrc: "/images/cert2.png",
+        date: "March 21, 2023",
         label: "Digital Egypt Cubs Initiative",
-        desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione tempore reprehenderit quia aspernatur eum iusto minima repellendus excepturi",
+        desc: "Completed Sololearn's Introduction to HTML course, gaining foundational knowledge of HTML structure and elements.",
     },
     {
-        imgSrc: "/images/cert1.png",
-        date: "Jan 3, 2021",
-        label: "Digital Egypt Cubs Initiative",
-        desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione tempore reprehenderit quia aspernatur eum iusto minima repellendus excepturi",
+        imgSrc: "/images/cert3.png",
+        date: "Oct 16, 2024",
+        label: "DECI - year 2",
+        desc: "Completed Level Three Nanodegree from the Digital Egypt Cubs Initiative, gaining advanced web development skills",
     },
 ];
 

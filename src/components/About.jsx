@@ -87,7 +87,7 @@ const About = () => {
     return (
         <section id="about" className="section overflow-hidden">
             <div className="container relative">
-                <div className="absolute flex items-center justify-center sm:p-2 p-1 sm:ring-2 ring-1 ring-inset dark:ring-white/30 ring-slate-600 sm:rounded-2xl rounded-xl gap sm:gap-2 sm:-top-16 -top-10 left-[50%] translate-x-[-50%] reveal-up dark:bg-zinc-200/30 bg-black/15">
+                <div className="absolute flex items-center justify-center min-w-[200px] sm:p-2 py-1 sm:ring-2 ring-1 ring-inset dark:ring-white/30 ring-slate-600 sm:rounded-2xl rounded-xl gap-1 sm:gap-2 sm:-top-16 -top-12 left-[50%] translate-x-[-50%] reveal-up dark:bg-zinc-200/30 bg-black/15">
                     <button
                         className={`${
                             activeTab === "who"
