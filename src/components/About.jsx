@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import Who from "./Who";
 import Resume from "./Resume";
+import Cert from "./Cert"; // new component
 import ScrollTrigger from "gsap/ScrollTrigger";
 import gsap from "gsap";
 
@@ -26,77 +27,121 @@ function animateRevealUp() {
 }
 
 const About = () => {
-    const [who, setWho] = useState(true);
+    const [activeTab, setActiveTab] = useState("who");
 
-    // Refs for GSAP animations
+    // Refs
     const whoRef = useRef(null);
     const resumeRef = useRef(null);
+    const certRef = useRef(null);
 
-    // Animate entrance/exit
+    // Direction config for each tab
+
     useEffect(() => {
-        if (who) {
-            // Who enters from left
-            gsap.fromTo(whoRef.current,
-                { x: -50, opacity: 0, display: "block" },
-                { x: 0, opacity: 1, duration: 0.6, ease: "power2.out" }
-            );
-            // Resume exits to right
-            gsap.to(resumeRef.current, {
-                x: 50, opacity: 0, duration: 0.4, ease: "power2.in", onComplete: () => {
-                    resumeRef.current.style.display = "none";
-                }
-            });
-        } else {
-            // Resume enters from right
-            gsap.fromTo(resumeRef.current,
-                { x: 50, opacity: 0, display: "block" },
-                { x: 0, opacity: 1, duration: 0.6, ease: "power2.out" }
-            );
-            // Who exits to left
-            gsap.to(whoRef.current, {
-                x: -50, opacity: 0, duration: 0.4, ease: "power2.in", onComplete: () => {
-                    whoRef.current.style.display = "none";
-                }
-            });
-        }
+        const directions = {
+            who: { in: { x: -150 }, out: { x: -150 } }, // farther left
+            resume: { in: { y: 150 }, out: { y: 150 } }, // slide from bottom
+            cert: { in: { x: 150 }, out: { x: 150 } }, // farther right
+        };
+
+        const refs = {
+            who: whoRef,
+            resume: resumeRef,
+            cert: certRef,
+        };
+
+        Object.keys(refs).forEach((key) => {
+            const el = refs[key].current;
+            gsap.killTweensOf(el);
+
+            if (key === activeTab) {
+                // Show before animating
+                el.style.display = "block";
+                gsap.fromTo(
+                    el,
+                    { ...directions[key].in, opacity: 0 },
+                    {
+                        x: 0,
+                        y: 0,
+                        opacity: 1,
+                        duration: 0.8,
+                        ease: "power3.out",
+                    }
+                );
+            } else {
+                // Animate out then hide
+                gsap.to(el, {
+                    ...directions[key].out,
+                    opacity: 0,
+                    duration: 0.6,
+                    ease: "power3.in",
+                    onComplete: () => {
+                        el.style.display = "none";
+                    },
+                });
+            }
+        });
 
         animateRevealUp();
-    }, [who]);
+    }, [activeTab]);
 
     return (
-        <section id="about" className="section">
+        <section id="about" className="section overflow-hidden">
             <div className="container relative">
-                <div
-                    className="absolute flex items-center justify-center py-2 px-2 ring-2 ring-inset dark:ring-white/30 ring-slate-600 rounded-2xl gap-2 -top-16 left-[50%] translate-x-[-50%] reveal-up dark:bg-zinc-200/30 bg-black/15"
-                >
+                <div className="absolute flex items-center justify-center sm:p-2 p-1 sm:ring-2 ring-1 ring-inset dark:ring-white/30 ring-slate-600 sm:rounded-2xl rounded-xl gap sm:gap-2 sm:-top-16 -top-10 left-[50%] translate-x-[-50%] reveal-up dark:bg-zinc-200/30 bg-black/15">
                     <button
                         className={`${
-                            who
-                                ? "dark:bg-white/90 bg-black/70 text-white dark:text-zinc-900 sm:text-lg text-md"
-                                : "bg-transparent text-slate-700 dark:text-white/80 sm:text-md text-sm"
-                        } px-3 py-1 rounded-lg transition-all duration-300`}
-                        onClick={() => setWho(true)}
+                            activeTab === "who"
+                                ? "dark:bg-white/90 bg-black/70 text-white dark:text-zinc-900 sm:text-lg text-sm"
+                                : "bg-transparent text-slate-700 dark:text-white/80 sm:text-base text-xs"
+                        } sm:px-3 px-1 sm:py-1 sm:rounded-lg rounded-md transition-all duration-300`}
+                        onClick={() => setActiveTab("who")}
                     >
                         Who I am
                     </button>
                     <button
                         className={`${
-                            !who
-                                ? "dark:bg-white/90 bg-black/70 text-white dark:text-zinc-900 sm:text-lg text-md"
-                                : "bg-transparent text-slate-700 dark:text-white/80 sm:text-md text-sm"
-                        } px-3 py-1 rounded-lg transition-all duration-300`}
-                        onClick={() => setWho(false)}
+                            activeTab === "resume"
+                                ? "dark:bg-white/90 bg-black/70 text-white dark:text-zinc-900 sm:text-lg text-sm"
+                                : "bg-transparent text-slate-700 dark:text-white/80 sm:text-base text-xs"
+                        } sm:px-3 px-1 sm:py-1 sm:rounded-lg rounded-md transition-all duration-300`}
+                        onClick={() => setActiveTab("resume")}
                     >
                         Resume
                     </button>
+                    <button
+                        className={`${
+                            activeTab === "cert"
+                                ? "dark:bg-white/90 bg-black/70 text-white dark:text-zinc-900 sm:text-lg text-sm"
+                                : "bg-transparent text-slate-700 dark:text-white/80 sm:text-base text-xs"
+                        } sm:px-3 px-1 sm:py-1 sm:rounded-lg rounded-md transition-all duration-300`}
+                        onClick={() => setActiveTab("cert")}
+                    >
+                        Certificates
+                    </button>
                 </div>
 
-                <div ref={whoRef} style={{ display: who ? "block" : "none" }}>
+                {/* Sections */}
+                <div
+                    ref={whoRef}
+                    style={{ display: activeTab === "who" ? "block" : "none" }}
+                >
                     <Who classes="mt-20" />
                 </div>
 
-                <div ref={resumeRef} style={{ display: !who ? "block" : "none" }}>
+                <div
+                    ref={resumeRef}
+                    style={{
+                        display: activeTab === "resume" ? "block" : "none",
+                    }}
+                >
                     <Resume classes="mt-20" />
+                </div>
+
+                <div
+                    ref={certRef}
+                    style={{ display: activeTab === "cert" ? "block" : "none" }}
+                >
+                    <Cert classes="mt-20" />
                 </div>
             </div>
         </section>

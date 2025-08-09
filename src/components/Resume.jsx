@@ -1,10 +1,19 @@
-import { School, Stars, User } from "lucide-react";
+import {
+    Blinds,
+    GraduationCap,
+    Languages,
+    User,
+} from "lucide-react";
 import React from "react";
 
 const personalData = [
     {
         title: "Full Name",
         content: "Tameem Muhammad Elmasry - تميم محمد المصري",
+    },
+    {
+        title: "Birth Day",
+        content: "July 14, 2009",
     },
     {
         title: "Location",
@@ -17,6 +26,10 @@ const personalData = [
     {
         title: "Phone",
         content: "+20 1031693766",
+    },
+    {
+        title: "LinkTree",
+        content: "https://linktr.ee/TameemElmasry",
     },
 ];
 
@@ -56,7 +69,7 @@ const Resume = ({ classes }) => {
             <div className="resume-div">
                 <div className="resume-div-title">
                     <h3>
-                        <User className="icon-img" />
+                        <Blinds className="icon-img" />
                         Summary:
                     </h3>
                 </div>
@@ -75,7 +88,7 @@ const Resume = ({ classes }) => {
             <div className="resume-div">
                 <div className="resume-div-title">
                     <h3>
-                        <User className="icon-img" />
+                        <GraduationCap className="icon-img" />
                         Education:
                     </h3>
                 </div>
@@ -89,7 +102,7 @@ const Resume = ({ classes }) => {
             <div className="resume-div">
                 <div className="resume-div-title">
                     <h3>
-                        <User className="icon-img" />
+                        <Languages className="icon-img" />
                         Languages:
                     </h3>
                 </div>
