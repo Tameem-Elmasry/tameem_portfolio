@@ -87,13 +87,13 @@ const About = () => {
     return (
         <section id="about" className="section overflow-hidden">
             <div className="container relative">
-                <div className="absolute flex items-center justify-center min-w-[200px] sm:p-2 py-1 sm:ring-2 ring-1 ring-inset dark:ring-white/30 ring-slate-600 sm:rounded-2xl rounded-xl gap-1 sm:gap-2 sm:-top-16 -top-12 left-[50%] translate-x-[-50%] reveal-up dark:bg-zinc-200/30 bg-black/15">
+                <div className="absolute flex items-center justify-center min-w-[200px] sm:p-2 py-2 sm:ring-2 ring-1 ring-inset dark:ring-white/30 ring-slate-600 sm:rounded-2xl rounded-xl gap-1 sm:gap-2 sm:-top-16 -top-12 left-[50%] translate-x-[-50%] reveal-up dark:bg-zinc-200/30 bg-black/15">
                     <button
                         className={`${
                             activeTab === "who"
                                 ? "dark:bg-white/90 bg-black/70 text-white dark:text-zinc-900 sm:text-lg text-sm"
                                 : "bg-transparent text-slate-700 dark:text-white/80 sm:text-base text-xs"
-                        } sm:px-3 px-1 sm:py-1 sm:rounded-lg rounded-md transition-all duration-300`}
+                        } sm:px-3 px-1 pt-1 sm:py-1 sm:rounded-lg rounded-md transition-all duration-300`}
                         onClick={() => setActiveTab("who")}
                     >
                         Who I am
@@ -103,7 +103,7 @@ const About = () => {
                             activeTab === "resume"
                                 ? "dark:bg-white/90 bg-black/70 text-white dark:text-zinc-900 sm:text-lg text-sm"
                                 : "bg-transparent text-slate-700 dark:text-white/80 sm:text-base text-xs"
-                        } sm:px-3 px-1 sm:py-1 sm:rounded-lg rounded-md transition-all duration-300`}
+                        } sm:px-3 px-1 pt-1 sm:py-1 sm:rounded-lg rounded-md transition-all duration-300`}
                         onClick={() => setActiveTab("resume")}
                     >
                         Resume
@@ -113,7 +113,7 @@ const About = () => {
                             activeTab === "cert"
                                 ? "dark:bg-white/90 bg-black/70 text-white dark:text-zinc-900 sm:text-lg text-sm"
                                 : "bg-transparent text-slate-700 dark:text-white/80 sm:text-base text-xs"
-                        } sm:px-3 px-1 sm:py-1 sm:rounded-lg rounded-md transition-all duration-300`}
+                        } sm:px-3 px-1 pt-1 sm:py-1 sm:rounded-lg rounded-md transition-all duration-300`}
                         onClick={() => setActiveTab("cert")}
                     >
                         Certificates

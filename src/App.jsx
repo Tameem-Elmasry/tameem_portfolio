@@ -16,7 +16,6 @@ import { ThemeContext } from "./context/ThemeContext";
 import { useContext, useEffect, useState } from "react";
 
 // TODO Tasks:
-// MO SECTION - Add section for the certificates
 // MO REVISE - all the tailwind classes that i don't know so i can learn them
 // MO UPDATE the instagram account
 // MO FINALLY - add the website to all my social media and cv and LinkTree
